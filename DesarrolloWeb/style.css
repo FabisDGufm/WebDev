@@ -1,0 +1,471 @@
+/* ========================================
+   VARIABLES Y CONFIGURACIÓN GLOBAL
+   ======================================== */
+:root {
+    --primary-green: #00ff88;
+    --dark-bg: #0a0e27;
+    --card-bg: #1a1f3a;
+    --text-light: #ffffff;
+    --text-gray: #8892b0;
+    --accent-purple: #7b68ee;
+    --accent-orange: #ff6b35;
+    --accent-pink: #ff006e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0a0e27 0%, #151935 50%, #0a0e27 100%);
+    min-height: 100vh;
+    color: var(--text-light);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Efecto de nubes/partículas en el fondo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(123, 104, 238, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
+    z-index: -1;
+}
+
+/* ========================================
+   HEADER - ESTILO HERO 3D
+   ======================================== */
+header {
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    perspective: 1000px;
+}
+
+header h1 {
+    font-size: 3.5em;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-green), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 30px;
+    animation: float 3s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+}
+
+header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    border: 3px solid var(--primary-green);
+    box-shadow: 
+        0 10px 40px rgba(0, 255, 136, 0.3),
+        0 0 60px rgba(0, 255, 136, 0.1);
+    transform: rotateY(0deg) rotateX(10deg);
+    transition: all 0.5s ease;
+}
+
+header img:hover {
+    transform: rotateY(360deg) rotateX(10deg) scale(1.1);
+    box-shadow: 
+        0 20px 60px rgba(0, 255, 136, 0.5),
+        0 0 100px rgba(0, 255, 136, 0.2);
+}
+
+/* ========================================
+   NAVEGACIÓN - ICONOS FLOTANTES 3D
+   ======================================== */
+nav {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+nav ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+nav li {
+    position: relative;
+    transform-style: preserve-3d;
+    animation: floatIcon 4s ease-in-out infinite;
+}
+
+nav li:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+nav li:nth-child(3) {
+    animation-delay: 1s;
+}
+
+nav a {
+    display: block;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--card-bg), #2a3050);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: rotateX(20deg) rotateY(-20deg);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--primary-green), var(--accent-purple), var(--accent-orange));
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+nav a:hover {
+    transform: rotateX(0deg) rotateY(0deg) translateZ(30px) scale(1.1);
+    box-shadow: 
+        0 20px 50px rgba(0, 255, 136, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+nav a:hover::before {
+    opacity: 1;
+}
+
+nav a img {
+    width: 40px;
+    height: 40px;
+    filter: brightness(1.2) contrast(1.1);
+    transition: transform 0.3s ease;
+}
+
+nav a:hover img {
+    transform: scale(1.2);
+}
+
+/* ========================================
+   MAIN CONTAINER
+   ======================================== */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    perspective: 1000px;
+}
+
+/* ========================================
+   SECCIONES - TARJETAS 3D FLOTANTES
+   ======================================== */
+section, article {
+    background: linear-gradient(135deg, var(--card-bg), #2a3050);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: rotateX(5deg);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+section::before, article::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+section:hover::before, article:hover::before {
+    left: 100%;
+}
+
+section:hover, article:hover {
+    transform: rotateX(0deg) translateY(-10px);
+    box-shadow: 
+        0 25px 60px rgba(0, 255, 136, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ========================================
+   TÍTULOS DE SECCIÓN
+   ======================================== */
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, var(--primary-green), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-green), transparent);
+    animation: expandWidth 2s ease-in-out infinite;
+}
+
+/* ========================================
+   TABLAS FUTURISTAS
+   ======================================== */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin: 20px 0;
+}
+
+caption {
+    font-size: 1.1em;
+    color: var(--primary-green);
+    margin-bottom: 15px;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+thead tr {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(123, 104, 238, 0.1));
+    backdrop-filter: blur(10px);
+}
+
+th {
+    padding: 15px;
+    text-align: left;
+    color: var(--primary-green);
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    border: none;
+}
+
+tbody tr {
+    background: rgba(26, 31, 58, 0.5);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+tbody tr::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--primary-green);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+tbody tr:hover::before {
+    transform: scaleY(1);
+}
+
+tbody tr:hover {
+    background: rgba(0, 255, 136, 0.05);
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(0, 255, 136, 0.1);
+}
+
+td {
+    padding: 15px;
+    color: var(--text-gray);
+    border: none;
+}
+
+/* ========================================
+   LISTAS TECH
+   ======================================== */
+ul, ol {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li, ol li {
+    padding: 10px 15px;
+    margin: 8px 0;
+    background: rgba(0, 255, 136, 0.05);
+    border-left: 3px solid var(--primary-green);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+    color: var(--text-gray);
+}
+
+ul li::before {
+    content: '▶';
+    color: var(--primary-green);
+    margin-right: 10px;
+}
+
+ol {
+    counter-reset: item;
+}
+
+ol li {
+    counter-increment: item;
+}
+
+ol li::before {
+    content: counter(item, decimal-leading-zero);
+    color: var(--primary-green);
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+ul li:hover, ol li:hover {
+    background: rgba(0, 255, 136, 0.1);
+    transform: translateX(10px);
+    border-left-width: 5px;
+}
+
+/* Sublistas */
+li ul, li ol {
+    margin-top: 10px;
+}
+
+li ul li, li ol li {
+    background: rgba(123, 104, 238, 0.05);
+    border-left-color: var(--accent-purple);
+    margin-left: 20px;
+}
+
+/* ========================================
+   BOTÓN CYBERPUNK
+   ======================================== */
+button {
+    background: linear-gradient(135deg, var(--primary-green), var(--accent-purple));
+    color: var(--text-light);
+    border: none;
+    padding: 15px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 10px 30px rgba(0, 255, 136, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 20px 40px rgba(0, 255, 136, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+    background: linear-gradient(135deg, rgba(26, 31, 58, 0.8), rgba(42, 48, 80, 0.8));
+    border-top: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+footer p {
+    color: var(--text-gray);
+    font-size: 0.9em;
+    letter-spacing: 1px;
+}
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0) rotateX(20deg) rotateY(-20deg); }
+    50% { transform: translateY(-15px) rotateX(25deg) rotateY(-25deg); }
+}
+
+@keyframes expandWidth {
+    0%, 100% { width: 60px; }
+    50% { width: 120px; }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav a {
+        width: 60px;
+        height: 60px;
+    }
+    
+    section, article {
+        transform: none;
+    }
+}
