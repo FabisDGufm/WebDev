@@ -1,18 +1,22 @@
 /* ========================================
-   VARIABLES - PALETA ATARDECER ROSADO
+   VARIABLES - PALETA EL LIBRO DE LA VIDA
    ======================================== */
 :root {
-    --sky-gradient-1: #87CEEB;
-    --sky-gradient-2: #FFB6C1;
-    --sky-gradient-3: #FFA07A;
-    --sunset-pink: #FF69B4;
-    --sunset-orange: #FF8C00;
-    --sunset-purple: #DA70D6;
-    --cloud-white: rgba(255, 255, 255, 0.9);
-    --folder-green: #4CAF50;
-    --folder-shadow: rgba(0, 0, 0, 0.2);
-    --text-dark: #2C3E50;
-    --card-white: rgba(255, 255, 255, 0.95);
+    /* Colores del atardecer mágico */
+    --naranja-vela: #FF6B35;
+    --dorado-luz: #FFD700;
+    --amarillo-calido: #FFA500;
+    --purpura-sombra: #8B4789;
+    --morado-profundo: #4A148C;
+    --azul-noche: #1A237E;
+    --rosa-mexicano: #E91E63;
+    
+    /* Colores de soporte */
+    --papel-picado: rgba(255, 255, 255, 0.95);
+    --madera-oscura: #3E2723;
+    --tierra-calida: #8D6E63;
+    --vela-derretida: #FFF8E1;
+    --sombra-mistica: rgba(75, 20, 70, 0.3);
 }
 
 * {
@@ -22,49 +26,49 @@
 }
 
 /* ========================================
-   BODY - FONDO CIELO ATARDECER
+   BODY - FONDO MÍSTICO ATARDECER
    ======================================== */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(to bottom, 
-        #87CEEB 0%, 
-        #FFB6C1 30%, 
-        #FFA07A 60%, 
-        #FF69B4 100%);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: 
+        radial-gradient(ellipse at bottom, #FF6B35 0%, transparent 50%),
+        radial-gradient(ellipse at top, #1A237E 0%, transparent 50%),
+        linear-gradient(180deg, 
+            #1A237E 0%, 
+            #4A148C 20%,
+            #8B4789 40%,
+            #FF6B35 70%,
+            #FFD700 90%,
+            #FFA500 100%);
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
 }
 
-/* Efecto de nubes */
-body::before,
-body::after {
+/* Efecto de velas flotantes */
+body::before {
     content: '';
     position: fixed;
-    background: radial-gradient(ellipse at center, 
-        rgba(255, 255, 255, 0.3) 0%, 
-        transparent 70%);
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.3) 0%, transparent 5%),
+        radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.3) 0%, transparent 5%),
+        radial-gradient(circle at 40% 40%, rgba(255, 215, 0, 0.2) 0%, transparent 8%),
+        radial-gradient(circle at 60% 60%, rgba(255, 215, 0, 0.25) 0%, transparent 6%),
+        radial-gradient(circle at 15% 35%, rgba(255, 215, 0, 0.2) 0%, transparent 4%),
+        radial-gradient(circle at 90% 70%, rgba(255, 215, 0, 0.3) 0%, transparent 5%);
+    animation: flicker 3s ease-in-out infinite;
+    pointer-events: none;
 }
 
-body::before {
-    width: 600px;
-    height: 200px;
-    top: 10%;
-    left: -100px;
-    animation: floatCloud 20s infinite;
-}
-
-body::after {
-    width: 400px;
-    height: 150px;
-    top: 30%;
-    right: -50px;
-    animation: floatCloud 25s infinite reverse;
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
 }
 
 /* ========================================
-   HEADER - ESTILO LIMPIO
+   HEADER - ESTILO FESTIVO MEXICANO
    ======================================== */
 header {
     text-align: center;
@@ -74,28 +78,47 @@ header {
 }
 
 header h1 {
-    font-size: 2.8em;
+    font-size: 3em;
     font-weight: 700;
-    color: var(--text-dark);
+    color: var(--vela-derretida);
     margin-bottom: 25px;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    text-shadow: 
+        3px 3px 6px rgba(0, 0, 0, 0.7),
+        0 0 30px var(--dorado-luz),
+        0 0 50px var(--naranja-vela);
+    font-family: 'Georgia', serif;
+    letter-spacing: 2px;
+    animation: glowTitle 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowTitle {
+    from { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7), 0 0 30px var(--dorado-luz), 0 0 50px var(--naranja-vela); }
+    to { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7), 0 0 40px var(--dorado-luz), 0 0 70px var(--naranja-vela); }
 }
 
 header img {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    border: 4px solid white;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    border: 5px solid var(--dorado-luz);
+    box-shadow: 
+        0 0 30px var(--naranja-vela),
+        0 0 50px var(--dorado-luz),
+        0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 header img:hover {
     transform: scale(1.1) rotate(5deg);
+    box-shadow: 
+        0 0 40px var(--naranja-vela),
+        0 0 60px var(--dorado-luz),
+        0 12px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* ========================================
-   NAVEGACIÓN - CARPETAS 3D FLOTANTES
+   NAVEGACIÓN - VELAS FLOTANTES 3D
    ======================================== */
 nav {
     padding: 30px 20px;
@@ -108,81 +131,110 @@ nav {
 
 nav ul {
     display: flex;
-    gap: 60px;
+    gap: 80px;
     list-style: none;
 }
 
 nav li {
     position: relative;
-    animation: float3D 6s ease-in-out infinite;
+    animation: floatCandle 4s ease-in-out infinite;
     transform-style: preserve-3d;
 }
 
 nav li:nth-child(1) { animation-delay: 0s; }
-nav li:nth-child(2) { animation-delay: 0.5s; }
-nav li:nth-child(3) { animation-delay: 1s; }
+nav li:nth-child(2) { animation-delay: 0.7s; }
+nav li:nth-child(3) { animation-delay: 1.4s; }
 
-/* Carpeta 3D estilo Wissly */
+@keyframes floatCandle {
+    0%, 100% { transform: translateY(0) rotateZ(-2deg); }
+    50% { transform: translateY(-15px) rotateZ(2deg); }
+}
+
+/* Contenedor de vela */
 nav a {
     display: block;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 100px;
     position: relative;
-    transform: rotateX(-20deg) rotateY(25deg);
+    transform: rotateX(-10deg);
     transform-style: preserve-3d;
     transition: transform 0.3s ease;
 }
 
-/* Parte frontal de la carpeta */
+/* Base de la vela */
 nav a::before {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--sunset-pink), var(--sunset-orange));
-    border-radius: 10px;
-    transform: translateZ(10px);
+    width: 60px;
+    height: 80px;
+    left: 10px;
+    top: 20px;
+    background: linear-gradient(180deg, 
+        var(--vela-derretida) 0%, 
+        #FFECB3 50%,
+        #FFE082 100%);
+    border-radius: 5px 5px 10px 10px;
     box-shadow: 
-        0 20px 40px rgba(255, 105, 180, 0.3),
-        inset 0 2px 5px rgba(255, 255, 255, 0.5);
+        inset -5px 0 10px rgba(255, 152, 0, 0.3),
+        0 20px 40px rgba(255, 107, 53, 0.5);
 }
 
-/* Parte superior de la carpeta (tapa) */
+/* Llama de la vela */
 nav a::after {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 30%;
-    background: linear-gradient(135deg, var(--sunset-orange), var(--sunset-purple));
-    border-radius: 10px 10px 0 0;
-    top: -10px;
-    transform: rotateX(30deg) translateZ(15px);
-    box-shadow: 0 -5px 20px rgba(255, 140, 0, 0.3);
+    width: 20px;
+    height: 25px;
+    background: radial-gradient(ellipse at bottom, 
+        var(--dorado-luz) 0%, 
+        var(--naranja-vela) 40%, 
+        transparent 70%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    top: 5px;
+    left: 30px;
+    animation: flame 1.5s ease-in-out infinite;
+    filter: blur(1px);
 }
 
-/* Colores únicos para cada carpeta */
+@keyframes flame {
+    0%, 100% { 
+        transform: scale(1) rotate(-2deg);
+        opacity: 0.9;
+    }
+    50% { 
+        transform: scale(1.1) rotate(2deg);
+        opacity: 1;
+    }
+}
+
+/* Cera derretida - colores diferentes para cada vela */
 nav li:nth-child(1) a::before {
-    background: linear-gradient(135deg, #FF69B4, #FF1493);
+    background: linear-gradient(180deg, #FFE082, #FFD54F, #FFCA28);
 }
 nav li:nth-child(2) a::before {
-    background: linear-gradient(135deg, #DA70D6, #BA55D3);
+    background: linear-gradient(180deg, #FFCCBC, #FFAB91, #FF8A65);
 }
 nav li:nth-child(3) a::before {
-    background: linear-gradient(135deg, #FF8C00, #FFA500);
+    background: linear-gradient(180deg, #F8BBD0, #F48FB1, #F06292);
 }
 
 nav a img {
-    position: relative;
+    position: absolute;
     z-index: 2;
     width: 35px;
     height: 35px;
-    margin: 17px;
-    filter: brightness(0) invert(1);
-    transform: translateZ(20px);
+    top: 40px;
+    left: 22px;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    transition: all 0.3s ease;
 }
 
 nav a:hover {
-    transform: rotateX(-10deg) rotateY(35deg) translateY(-10px) scale(1.1);
+    transform: rotateX(0deg) translateY(-10px) scale(1.1);
+}
+
+nav a:hover img {
+    filter: drop-shadow(0 0 10px var(--dorado-luz));
 }
 
 /* ========================================
@@ -197,61 +249,66 @@ main {
 }
 
 /* ========================================
-   SECCIONES - TARJETAS FLOTANTES
+   SECCIONES - PAPEL PICADO
    ======================================== */
 section, article {
-    background: var(--card-white);
-    border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 30px;
+    background: var(--papel-picado);
+    border-radius: 15px;
+    padding: 35px;
+    margin-bottom: 35px;
     box-shadow: 
-        0 15px 35px rgba(0, 0, 0, 0.1),
-        0 5px 15px rgba(0, 0, 0, 0.07);
+        0 15px 35px var(--sombra-mistica),
+        0 0 60px rgba(255, 215, 0, 0.1),
+        inset 0 0 20px rgba(255, 215, 0, 0.05);
     transform: translateY(0);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    border: 2px solid rgba(255, 215, 0, 0.2);
 }
 
-/* Efecto de brillo */
+/* Patrón de papel picado en el borde */
 section::before, article::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(255, 255, 255, 0.1),
-        transparent
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--rosa-mexicano) 0px,
+        var(--rosa-mexicano) 10px,
+        transparent 10px,
+        transparent 20px
     );
-    transform: rotate(45deg);
-    transition: all 0.5s;
-    opacity: 0;
-}
-
-section:hover::before, article:hover::before {
-    animation: shine 0.5s ease-in-out;
+    clip-path: polygon(
+        0 0, 5% 100%, 10% 0, 15% 100%, 20% 0, 25% 100%, 30% 0, 35% 100%, 
+        40% 0, 45% 100%, 50% 0, 55% 100%, 60% 0, 65% 100%, 70% 0, 75% 100%,
+        80% 0, 85% 100%, 90% 0, 95% 100%, 100% 0
+    );
 }
 
 section:hover, article:hover {
     transform: translateY(-5px);
     box-shadow: 
-        0 20px 45px rgba(255, 105, 180, 0.15),
-        0 10px 25px rgba(255, 105, 180, 0.1);
+        0 20px 45px var(--sombra-mistica),
+        0 0 80px rgba(255, 215, 0, 0.2),
+        inset 0 0 30px rgba(255, 215, 0, 0.08);
+    border-color: var(--dorado-luz);
 }
 
 /* ========================================
-   TÍTULOS
+   TÍTULOS - ESTILO CALIGRÁFICO
    ======================================== */
 h2 {
-    color: var(--text-dark);
-    font-size: 1.8em;
-    margin-bottom: 20px;
+    color: var(--madera-oscura);
+    font-size: 2em;
+    margin-bottom: 25px;
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
+    font-family: 'Georgia', serif;
+    text-shadow: 2px 2px 4px rgba(255, 215, 0, 0.3);
 }
 
 h2::after {
@@ -259,36 +316,50 @@ h2::after {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 50px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--sunset-pink), var(--sunset-orange));
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--naranja-vela), 
+        var(--dorado-luz), 
+        var(--naranja-vela));
     border-radius: 2px;
+    animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.8; transform: scaleX(1); }
+    50% { opacity: 1; transform: scaleX(1.1); }
 }
 
 /* ========================================
-   TABLAS
+   TABLAS - ESTILO FESTIVO
    ======================================== */
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    background: white;
+    background: rgba(255, 248, 225, 0.9);
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.2),
+        0 0 30px rgba(255, 215, 0, 0.1);
+    border: 2px solid var(--tierra-calida);
 }
 
 caption {
     font-weight: 600;
-    color: var(--sunset-pink);
+    color: var(--naranja-vela);
     margin-bottom: 10px;
     text-align: left;
-    font-size: 1.1em;
+    font-size: 1.2em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 thead {
-    background: linear-gradient(135deg, var(--sunset-pink), var(--sunset-orange));
+    background: linear-gradient(135deg, var(--naranja-vela), var(--rosa-mexicano));
     color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 th {
@@ -296,20 +367,22 @@ th {
     text-align: left;
     font-weight: 600;
     letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--dorado-luz);
 }
 
 td {
     padding: 12px 15px;
-    border-bottom: 1px solid #f0f0f0;
-    color: var(--text-dark);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    color: var(--madera-oscura);
 }
 
 tbody tr {
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 tbody tr:hover {
-    background: rgba(255, 182, 193, 0.1);
+    background: rgba(255, 215, 0, 0.1);
+    transform: scale(1.01);
 }
 
 tbody tr:last-child td {
@@ -317,95 +390,131 @@ tbody tr:last-child td {
 }
 
 /* ========================================
-   LISTAS
+   LISTAS - DECORACIÓN MEXICANA
    ======================================== */
 ul, ol {
-    margin-left: 20px;
-    color: var(--text-dark);
+    margin-left: 25px;
+    color: var(--madera-oscura);
 }
 
 ul li, ol li {
-    padding: 8px 0;
-    transition: transform 0.2s ease;
+    padding: 10px 0;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+ul li::before {
+    content: '✦';
+    position: absolute;
+    left: -20px;
+    color: var(--naranja-vela);
+    font-size: 1.2em;
+}
+
+ol li::marker {
+    color: var(--naranja-vela);
+    font-weight: bold;
 }
 
 ul li:hover, ol li:hover {
-    transform: translateX(5px);
-    color: var(--sunset-pink);
+    transform: translateX(8px);
+    color: var(--purpura-sombra);
+}
+
+/* Listas anidadas */
+ul ul li::before, ol ul li::before {
+    content: '◆';
+    color: var(--rosa-mexicano);
+    font-size: 1em;
 }
 
 /* ========================================
-   BOTÓN
+   BOTÓN - ESTILO MÁGICO
    ======================================== */
 button {
-    background: linear-gradient(135deg, var(--sunset-pink), var(--sunset-orange));
+    background: linear-gradient(135deg, var(--naranja-vela), var(--rosa-mexicano));
     color: white;
-    border: none;
-    padding: 12px 30px;
+    border: 2px solid var(--dorado-luz);
+    padding: 14px 35px;
     font-size: 16px;
-    border-radius: 25px;
+    border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.25);
+    box-shadow: 
+        0 8px 25px rgba(255, 107, 53, 0.4),
+        0 0 40px rgba(255, 215, 0, 0.2),
+        inset 0 0 20px rgba(255, 255, 255, 0.2);
     font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 215, 0, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
 }
 
 button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(255, 105, 180, 0.35);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 12px 35px rgba(255, 107, 53, 0.5),
+        0 0 60px rgba(255, 215, 0, 0.3),
+        inset 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+button:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 /* ========================================
-   FOOTER
+   FOOTER - ESTILO TIERRA CALIDA
    ======================================== */
 footer {
     text-align: center;
-    padding: 30px 20px;
-    margin-top: 50px;
-    color: var(--text-dark);
-    background: rgba(255, 255, 255, 0.5);
+    padding: 35px 20px;
+    margin-top: 60px;
+    color: var(--vela-derretida);
+    background: linear-gradient(180deg, 
+        rgba(62, 39, 35, 0.8),
+        rgba(141, 110, 99, 0.8));
     backdrop-filter: blur(10px);
-    border-radius: 20px 20px 0 0;
+    border-radius: 30px 30px 0 0;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+footer::before {
+    content: '❦ ❦ ❦';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--dorado-luz);
+    font-size: 1.5em;
 }
 
 /* ========================================
-   ANIMACIONES
+   ANIMACIONES ADICIONALES
    ======================================== */
-@keyframes float3D {
+@keyframes floatMagic {
     0%, 100% {
-        transform: translateY(0) rotateX(-20deg) rotateY(25deg);
-    }
-    50% {
-        transform: translateY(-20px) rotateX(-25deg) rotateY(30deg);
-    }
-}
-
-@keyframes floatCloud {
-    0%, 100% {
-        transform: translateX(0) translateY(0);
+        transform: translateY(0) rotate(0deg);
     }
     25% {
-        transform: translateX(100px) translateY(-20px);
-    }
-    50% {
-        transform: translateX(-50px) translateY(10px);
+        transform: translateY(-10px) rotate(1deg);
     }
     75% {
-        transform: translateX(50px) translateY(-10px);
-    }
-}
-
-@keyframes shine {
-    0% {
-        opacity: 0;
-        transform: rotate(45deg) translateX(-100%);
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: rotate(45deg) translateX(100%);
+        transform: translateY(5px) rotate(-1deg);
     }
 }
 
@@ -414,26 +523,27 @@ footer {
    ======================================== */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 2em;
+        font-size: 2.2em;
     }
     
     nav ul {
-        gap: 30px;
+        gap: 40px;
     }
     
     nav a {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 85px;
     }
     
     nav a img {
         width: 30px;
         height: 30px;
-        margin: 15px;
+        top: 35px;
+        left: 20px;
     }
     
     section, article {
-        padding: 20px;
+        padding: 25px;
     }
 }
 
@@ -441,6 +551,10 @@ footer {
     nav ul {
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 30px;
+    }
+    
+    header h1 {
+        font-size: 1.8em;
     }
 }
