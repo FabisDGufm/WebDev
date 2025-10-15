@@ -1,0 +1,343 @@
+@font-face {
+    font-family: 'DxNacky';
+    src: url('fonts/DxNacky-Light-Free-personal-use.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DxNackyI';
+    src: url('fonts/DxNacky-MediumItalic--Free-personal-use.otf') format('opentype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+body {
+    font-family: 'DxNacky', Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, 
+        #e6f7ff 0%,      /* celeste muy claro - arriba */
+        #b3e0ff 12.5%,   
+        #99d6ff 25%,     /* celeste cielo */
+        #66b3ff 37.5%,   
+        #3399ff 45%,     /* azul claro - mitad */
+        #0073e6 62.5%,   
+        #004d99 70%,     /* azul oscuro */
+        #1a3d5c 83.5%,   
+        #0d1117 100%     /* negro - abajo */
+    );
+    min-height: 100vh;
+    background-attachment: scroll;
+}
+
+/* Flexbox */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+header h1 {
+    font-family: 'DxNackyI', Arial, sans-serif;
+    font-size: 2.5em;
+    margin: 0 0 20px 0;
+    color: #1a5490;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+}
+
+header img {
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    border: 4px solid rgba(255,255,255,0.5);
+}
+
+nav {
+    padding: 20px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+nav ul li {
+    transition: transform 0.3s;
+}
+
+nav ul li:hover {
+    transform: scale(1.15);
+}
+
+/* GRID */
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(7, auto);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#about {
+    grid-row: 1;
+    padding: 30px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 10px;
+    color: #0d3d68;
+    background: rgba(255, 255, 255, 0.65); 
+}
+
+#educacion {
+    grid-row: 2;
+    padding: 30px;
+    border: 2px solid rgba(255,255,255,0.25);
+    border-radius: 10px;
+    color: #0d3d68;
+    background: rgba(255, 255, 255, 0.70); 
+}
+
+#experiencia {
+    grid-row: 3;
+    padding: 30px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    color: #0d3d68;
+    background: rgba(255, 255, 255, 0.70);
+}
+
+/* Tecnologias */
+main section:nth-of-type(4) {
+    grid-row: 4;
+    padding: 30px;
+    border: 2px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    color: #0d3d68;
+    background: rgba(255, 255, 255, 0.70);
+}
+
+/* lenguajes */
+main section:nth-of-type(5) {
+    grid-row: 5;
+    padding: 30px;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    color: #0d3d68;
+    background: rgba(255, 255, 255, 0.73);
+}
+
+/* Soft Skills */
+main article {
+    grid-row: 6;
+    padding: 30px;
+    border: 2px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    color: #0d3d68;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.bottom-container {
+    grid-row: 7;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    padding: 30px;
+}
+
+h2 {
+    font-family: 'DxNackyI', Arial, sans-serif;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid currentColor;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th {
+    background: rgba(0,0,0,0.1);
+    padding: 12px;
+    text-align: left;
+}
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+button {
+    background: rgba(255,255,255,0.9);
+    color: #003366;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'DxNacky', Arial, sans-serif;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: rgba(255,255,255,1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255,255,255,0.3);
+}
+
+footer p {
+    color: rgba(255,255,255,0.9);
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    
+    header img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    main {
+        padding: 10px;
+        gap: 15px;
+    }
+    
+    #about, #educacion, #experiencia,
+    main section:nth-of-type(4),
+    main section:nth-of-type(5),
+    main article {
+        padding: 20px;
+    }
+    
+    .bottom-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    table {
+        font-size: 0.9em;
+    }
+    
+    th, td {
+        padding: 8px;
+    }
+    
+    body {
+        font-size: 14px;
+    }
+    
+    h2 {
+        font-size: 1.4em;
+    }
+}
+
+/* Tablet */
+@media (min-width: 481px) and (max-width: 1026px) {
+    header h1 {
+        font-size: 2.2em;
+    }
+    
+    header img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    main {
+        max-width: 750px;
+        padding: 15px;
+    }
+    
+    #about, #educacion, #experiencia,
+    main section:nth-of-type(4),
+    main section:nth-of-type(5),
+    main article {
+        padding: 25px;
+    }
+    
+    .bottom-container {
+        padding: 25px;
+    }
+    
+    body {
+        font-size: 16px;
+    }
+    
+    h2 {
+        font-size: 1.6em;
+    }
+    
+    button {
+        padding: 12px 24px;
+        font-size: 15px;
+    }
+}
+
+/* Desktop*/
+@media (min-width: 1026px) {
+    header h1 {
+        font-size: 2.3em;  
+    }
+    
+     eader img {
+        width: 150px; 
+        height: 150px;
+    }
+    
+    main {
+        max-width: 1000px;  
+        padding: 25px; 
+    }
+
+    nav a img {
+        width: 50px; 
+        height: 50px;
+    }
+    
+    nav ul {
+        gap: 40px;  
+    }
+    
+    nav ul li:hover {
+        transform: scale(1.1);  
+    }
+    
+    body {
+        font-size: 19px;  
+    }
+    
+    h2 {
+        font-size: 1.8em; 
+    }
+    
+    th, td {
+        padding: 12px;  
+    }
+    
+    button {
+        padding: 14px 28px;  
+        font-size: 16px;
+    }
+}
