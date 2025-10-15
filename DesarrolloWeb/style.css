@@ -251,3 +251,44 @@ footer p {
         font-size: 1.4em;
     }
 }
+
+/* Tablet */
+@media (min-width: 481px) and (max-width: 1026px) {
+    header h1 {
+        font-size: 2.2em;
+    }
+    
+    header img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    main {
+        max-width: 750px;
+        padding: 15px;
+    }
+    
+    #about, #educacion, #experiencia,
+    main section:nth-of-type(4),
+    main section:nth-of-type(5),
+    main article {
+        padding: 25px;
+    }
+    
+    .bottom-container {
+        padding: 25px;
+    }
+    
+    body {
+        font-size: 16px;
+    }
+    
+    h2 {
+        font-size: 1.6em;
+    }
+    
+    button {
+        padding: 12px 24px;
+        font-size: 15px;
+    }
+}
