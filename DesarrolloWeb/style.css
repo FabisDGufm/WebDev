@@ -28,7 +28,7 @@ body {
         #004d99 70%,     /* azul oscuro */
         #1a3d5c 83.5%,   
         #0d1117 100%     /* negro - abajo */
-    );
+    ) !important;
     min-height: 100vh;
     background-attachment: scroll;
 }
@@ -42,7 +42,7 @@ header {
 }
 
 header h1 {
-    font-family: 'DxNackyI', Arial, sans-serif;
+    font-family: 'DxNackyI', Arial, sans-serif !important;
     font-size: 2.5em;
     margin: 0 0 20px 0;
     color: #1a5490;
@@ -190,8 +190,15 @@ button {
     transition: all 0.3s;
 }
 
-button:hover {
+.btn-custom {
+    background: rgba(255,255,255,0.9);
+    color: #003366;
+    border: none;
+}
+
+.btn-custom:hover {
     background: rgba(255,255,255,1);
+    color: #003366;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255,255,255,0.3);
 }
