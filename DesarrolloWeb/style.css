@@ -28,7 +28,7 @@ body {
         #004d99 70%,     /* azul oscuro */
         #1a3d5c 83.5%,   
         #0d1117 100%     /* negro - abajo */
-    );
+    ) !important;
     min-height: 100vh;
     background-attachment: scroll;
 }
@@ -42,7 +42,7 @@ header {
 }
 
 header h1 {
-    font-family: 'DxNackyI', Arial, sans-serif;
+    font-family: 'DxNackyI', Arial, sans-serif !important;
     font-size: 2.5em;
     margin: 0 0 20px 0;
     color: #1a5490;
