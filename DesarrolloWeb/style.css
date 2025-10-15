@@ -77,3 +77,47 @@ nav ul li {
 nav ul li:hover {
     transform: scale(1.1);
 }
+
+/* GRID */
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    gap: 30px;
+    padding: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#educacion {
+    grid-row: 1;
+}
+
+#experiencia {
+    grid-row: 2;
+}
+
+/* Tecnologías */
+main section:nth-of-type(3) {
+    grid-row: 3;
+}
+
+/* lenguajes */
+main section:nth-of-type(4) {
+    grid-row: 4;
+}
+
+/* Soft Skills */
+main article {
+    grid-row: 5;
+}
+
+/* Subgrid botón y footer :) */
+.bottom-container {
+    grid-row: 6;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    margin-top: 30px;
+}
