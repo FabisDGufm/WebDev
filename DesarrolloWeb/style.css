@@ -35,3 +35,45 @@ header h1 {
     font-size: 2.5em;
     margin: 10px 0;
 }
+
+/* FLEXBOX - Header vertical: nombre, foto, nav */
+header {
+    display: flex;
+    flex-direction: column; /* Cambiar a columna */
+    align-items: center;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-bottom: 3px solid #007bff;
+}
+
+header h1 {
+    font-family: 'DxNackyI', Arial, sans-serif;
+    font-size: 2.5em;
+    margin: 0 0 20px 0;
+    color: #333;
+}
+
+header img {
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/*Flexbox horizontal */
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+nav ul li {
+    transition: transform 0.3s;
+}
+
+nav ul li:hover {
+    transform: scale(1.1);
+}
