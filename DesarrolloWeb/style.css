@@ -168,14 +168,15 @@ table {
 }
 
 table th {
-    background: rgba(0,0,0,0.1);
+    background: rgba(66, 103, 138, 0.1);
     padding: 12px;
-    text-align: left;
+    text-align: center;
 }
 
 table td {
     padding: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 2.5px solid rgba(24, 23, 23, 0.1);
+    text-align: center;
 }
 
 button {
@@ -347,4 +348,24 @@ footer p {
         padding: 14px 28px;  
         font-size: 16px;
     }
+}
+
+#btn-experiencia {
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+#btn-experiencia:hover {
+    background-color: #7fafdf;
+}
+
+#experiencia-content {
+    transition: all 0.3s ease;
+}
+
+#experiencia-content.oculto {
+    display: none;
 }

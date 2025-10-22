@@ -12,7 +12,7 @@ function obtenerSaludo() {
         saludo = "buenas noches";
     }
 
-    return saludo
+    return saludo;
 }
 
 function actualizarSaludo() {
@@ -23,9 +23,43 @@ function actualizarSaludo() {
     }
 }
 
+function toggleExperiencia() {
+    const seccionExperiencia = document.getElementById('experiencia');
+    const boton = document.getElementById('btn-experiencia');
+    
+    if (seccionExperiencia.style.display === 'none') {
+        seccionExperiencia.style.display = 'block';
+        boton.textContent = 'Ocultar Experiencia Laboral';
+    } else {
+        seccionExperiencia.style.display = 'none';
+        boton.textContent = 'Mostrar Experiencia Laboral';
+    }
+}
+
+function toggleExperiencia() {
+    const contenidoExperiencia = document.getElementById('experiencia-content');
+    const btnText = document.getElementById('btn-text');
+    const btnIcon = document.getElementById('btn-icon');
+    
+    contenidoExperiencia.classList.toggle('oculto');
+    
+    if (contenidoExperiencia.classList.contains('oculto')) {
+        btnText.textContent = 'Mostrar';
+        btnIcon.textContent = '▶';
+    } else {
+        btnText.textContent = 'Ocultar';
+        btnIcon.textContent = '▼';
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     actualizarSaludo();
 
     setInterval(actualizarSaludo, 60000);
+
+    const botonExperiencia = document.getElementById('btn-experiencia');
+    if (botonExperiencia) {
+        botonExperiencia.addEventListener('click', toggleExperiencia);
+    }
 });
 
