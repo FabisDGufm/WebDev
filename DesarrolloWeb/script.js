@@ -52,6 +52,41 @@ function toggleExperiencia() {
     }
 }
 
+function toggleTheme() {
+    const body = document.body;
+    const themeIcon = document.getElementById('theme-icon');
+    
+    // Toggle clase del body
+    body.classList.toggle('modo-oscuro');
+    
+    // Cambiar imagen del botón
+    if (body.classList.contains('modo-oscuro')) {
+        themeIcon.src = 'images/lunaCV.png';  // Imagen de luna con estrellas
+        themeIcon.alt = 'Cambiar a modo día';
+        
+        // Ajustar opacidad de las secciones para mejor legibilidad
+        document.querySelectorAll('section, article').forEach(el => {
+            el.style.background = 'rgba(255, 255, 255, 0.85)';
+        });
+    } else {
+        themeIcon.src = 'images/solCV.png';  // Imagen del sol
+        themeIcon.alt = 'Cambiar a modo noche';
+        
+        // Restaurar opacidad original
+        document.querySelectorAll('#about').forEach(el => {
+            el.style.background = 'rgba(255, 255, 255, 0.65)';
+        });
+        document.querySelectorAll('#educacion, #experiencia, main section:nth-of-type(4), main section:nth-of-type(5)').forEach(el => {
+            el.style.background = 'rgba(255, 255, 255, 0.70)';
+        });
+        document.querySelectorAll('main article').forEach(el => {
+            el.style.background = 'rgba(255, 255, 255, 0.75)';
+        });
+    }
+    
+    localStorage.setItem('theme', body.classList.contains('modo-oscuro') ? 'dark' : 'light');
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     actualizarSaludo();
 
@@ -60,6 +95,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const botonExperiencia = document.getElementById('btn-experiencia');
     if (botonExperiencia) {
         botonExperiencia.addEventListener('click', toggleExperiencia);
+    }
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        toggleTheme();
+    }
+    
+    const themeButton = document.getElementById('toggle-theme');
+    if (themeButton) {
+        themeButton.addEventListener('click', toggleTheme);
     }
 });
 

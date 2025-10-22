@@ -31,6 +31,36 @@ body {
     ) !important;
     min-height: 100vh;
     background-attachment: scroll;
+    transition: background 0.5s ease;
+}
+
+body.modo-oscuro {
+    background: linear-gradient(180deg,
+        #a08fa8 0%,      
+        #8a7d99 12.5%,   
+        #726b8a 25%,     
+        #5a5a7d 37.5%,   
+        #424870 45%,     
+        #2f3a63 62.5%,   
+        #1f2b56 70%,     
+        #111d45 83.5%,   
+        #070f28 100%
+    ) !important;
+}
+
+body.modo-oscuro header h1 {
+    color: #f5e6d3;  /* Crema suave */
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+
+body.modo-oscuro footer p {
+    color: #d4c5d9;  /* Mismo color sutil para el footer */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+body.modo-oscuro section,
+body.modo-oscuro article {
+    background: rgba(255, 255, 255, 0.85) !important;
 }
 
 /* Flexbox */
@@ -359,7 +389,7 @@ footer p {
 }
 
 #btn-experiencia:hover {
-    background-color: #7fafdf;
+    background-color: #7da1c5;
 }
 
 #experiencia-content {
@@ -368,4 +398,39 @@ footer p {
 
 #experiencia-content.oculto {
     display: none;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    cursor: pointer;
+    padding: 0.2;
+    animation: float 3s ease-in-out infinite;
+}
+
+
+.theme-toggle img {
+    filter: drop-shadow(0 0 20px rgba(255, 220, 0, 0.6));
+    transition: all 0.5s ease;
+    display: block;
+    border: none;
+    outline: none;
+}
+
+body:not(.modo-oscuro) .theme-toggle img {
+    filter: drop-shadow(0 0 25px rgba(255, 200, 0, 0.8));
+}
+
+body.modo-oscuro .theme-toggle img {
+    filter: drop-shadow(0 0 20px rgba(200, 200, 255, 0.7));
+}
+
+.theme-toggle:hover img {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 35px rgba(255, 220, 0, 1));
 }
